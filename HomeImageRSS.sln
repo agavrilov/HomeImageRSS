@@ -6,16 +6,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateRSS", "GenerateRSS\GenerateRSS.csproj", "{3B95FBF0-67E6-4212-B41D-F1EA89AC45C8}"
 EndProject
 Global
-	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 3
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = CollectAllImages\\CollectAllImages.csproj
-		SccLocalPath1 = .
-		SccProjectFilePathRelativizedFromConnection1 = CollectAllImages\\
-		SccProjectUniqueName2 = GenerateRSS\\GenerateRSS.csproj
-		SccLocalPath2 = .
-		SccProjectFilePathRelativizedFromConnection2 = GenerateRSS\\
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
 		Release|x86 = Release|x86
