@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Home photos</title>
+    <link>http://192.168.2.10/Photos</link>
+    <description>Home photos</description>
+    <pubDate>Sun, 20 Feb 2011 07:21:34 -0800</pubDate>
+    <lastBuildDate>Sun, 20 Feb 2011 07:21:34 -0800</lastBuildDate>
+  </channel>
+</rss>
