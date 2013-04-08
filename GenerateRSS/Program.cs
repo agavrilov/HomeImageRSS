@@ -74,6 +74,9 @@ namespace GenerateRSS
 
         private static void AddItemElement(XmlDocument doc, string rootUri, XmlNode channelNode, string relativeUrl, int width, int height, int durationInSeconds)
         {
+            Uri imageUri = new Uri(rootUri + relativeUrl);
+            string absoluteUri = imageUri.AbsoluteUri;
+
             XmlElement itemElem = doc.CreateElement("item");
 
             XmlElement titleElem = doc.CreateElement("title");
@@ -81,9 +84,21 @@ namespace GenerateRSS
             titleElem.AppendChild(text);
             itemElem.AppendChild(titleElem);
 
+            XmlElement guidElem = doc.CreateElement("guid");
+            text = doc.CreateTextNode(absoluteUri);
+            guidElem.AppendChild(text);
+            itemElem.AppendChild(guidElem);
+
+            XmlElement mediaThumbnailElem = doc.CreateElement("media:thumbnail", "http://search.yahoo.com/mrss/");
+            mediaThumbnailElem.SetAttribute("url", absoluteUri);
+            mediaThumbnailElem.SetAttribute("type", "image/jpeg");
+            mediaThumbnailElem.SetAttribute("width", width.ToString());
+            mediaThumbnailElem.SetAttribute("height", height.ToString());
+            mediaThumbnailElem.SetAttribute("duration", durationInSeconds.ToString());
+            itemElem.AppendChild(mediaThumbnailElem);
+
             XmlElement mediaContentElem = doc.CreateElement("media:content", "http://search.yahoo.com/mrss/");
-            Uri imageUri = new Uri(rootUri+relativeUrl);
-            mediaContentElem.SetAttribute("url", imageUri.AbsoluteUri);
+            mediaContentElem.SetAttribute("url", absoluteUri);
             mediaContentElem.SetAttribute("type", "image/jpeg");
             mediaContentElem.SetAttribute("width", width.ToString());
             mediaContentElem.SetAttribute("height", height.ToString());
