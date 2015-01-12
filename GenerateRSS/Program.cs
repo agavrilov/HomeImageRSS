@@ -16,6 +16,9 @@ namespace GenerateRSS
             string targetRSSFilePath = args[1];
             int numberOfItems = Convert.ToInt32(args[2]);
             int durationInSeconds = Convert.ToInt32(args[3]);
+            string rootUri = null;
+            if (args.Length > 4)
+                rootUri = args[4];
 
             // time to live (in minutes)
             int ttl = (numberOfItems * durationInSeconds) / 60;
@@ -25,8 +28,11 @@ namespace GenerateRSS
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(rssTemplate);
 
-            XmlNode linkNode = doc.SelectSingleNode("//link");
-            string rootUri = linkNode.InnerText;
+            if (rootUri == null)
+            {
+                XmlNode linkNode = doc.SelectSingleNode("//link");
+                rootUri = linkNode.InnerText;
+            }
             if (!rootUri.EndsWith("/"))
                 rootUri += "/";
 
